@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <meta charset="UTF-8"/>
+
+    <title>Budżet domowy</title>
+    <style>
+        body {
+            color: white;
+            font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 25px;
+        }
+        .op {
+            padding: 20px;
+            background-color: #c2f79b;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+            margin: 0 100px;
+            width: 60%;
+        }
+        .container {
+            margin-top: 30px;
+            filter: opacity(1);
+            z-index: 31;
+            width: 80%;
+        }
+        h1 {
+            padding-top: 50px;
+            padding-bottom: 10px;
+            padding-left: 200px;
+            color: #fff737;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Budżet domowy</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Pokaż przychody</a></li>
+            <li ><a href="/">Pokaż wydatki</a></li>
+            <li><a href="dodaj?rodzaj=przychody">Dodaj pozycję przychodów</a></li>
+            <li><a href="dodaj?rodzaj=wydatki">Dodaj pozycję wydatków</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<h1 th th:text="${przychody.type}"></h1>
+<div class="op border border-white rounded">
+    <div class="container">
+
+
+
+        <div class="row align-items-start">
+            <div class="col">
+
+                <form action="/add" method="post" th:object="${newPrzychod}">
+                    <input type="hidden"  th:field="*{type}">
+                    <div class="form-group row">
+                        <label for="text" class="col-sm-3 col-form-label">Opis: </label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" th:field="*{description}" id="text" rows="3" placeholder="opis"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Podaj kwotę: </label>
+                        <div class="col-sm-9">  <input th:field="*{kwota}" type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Data: </label>
+                        <div class="col-sm-9">  <input th:field="*{date}" type="date"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-success">  Dodaj  </button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="col">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
