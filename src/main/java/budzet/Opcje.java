@@ -1,3 +1,5 @@
+package budzet;
+
 public enum Opcje {
     DODAJ_PRZYCHOD (1,"Dodanie nowego przychodu"),
     DODAJ_WYDATEK (2,"Dodanie nowego wydatku"),

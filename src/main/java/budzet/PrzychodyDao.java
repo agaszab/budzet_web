@@ -1,3 +1,5 @@
+package budzet;
+
 import org.springframework.ui.Model;
 
 import java.sql.*;
